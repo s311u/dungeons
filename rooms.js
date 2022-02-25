@@ -1,16 +1,30 @@
 class Room{
-    constructor(id, name, enemyId, connections, info){
+    constructor(id, name, enemyId, npcId, keyId, connections, info){
         this.id = id;
         this.name = name;
         this.enemyId = enemyId;
+        this.npcId = npcId;
+        this.keyId = keyId;
         this.connections = connections;
         this.info = info;
+        this.visited = visited; // 1 = visited, 0 = not visited
     }
 }
 let rooms = [
-    new Room(0, "Dungeon entrance", [],[1], "big and damp room with broken statues all around"),
-    new Room(1, "Hallway", [0,2],[0, 2], "long and dark hallway with dark pools of water on the floor and some fungus growing on the walls"),
-    new Room(2, "Chamber", [1],[1, 3], "small chamber, which is illuminated by glowing portal of somekind"),
-    new Room(3, "Portal", [], [2], "")
+    new Room(0, "", [], [], [], [1], "", 0),
+    new Room(1, "", [], [], [], [0, 2], "", 0),
+    new Room(2, "", [], [], [], [1, 3], "", 0),
+    new Room(3, "", [], [], [], [2, 4], "", 0),
+    new Room(4, "", [], [], [], [3, 5, 6], "", 0),
+    new Room(5, "", [], [], [], [4], "", 0),
+    new Room(6, "", [], [], [4, 7], "", 0),
+    new Room(7, "", [], [], [6, 8], "", 0),
+    new Room(8, "", [], [], [7, 9, 10], "", 0),
+    new Room(9, "", [], [], [8], "", 0),
+    new Room(10, "", [], [], [8], "", 0),
+    new Room(11, "", [], [], [12], "", 0),
+    new Room(12, "", [], [], [8, 11, 13, 14], "", 0),
+    new Room(13, "", [], [], [12], "", 0),
+    new Room(14, "", [], [], [12], "", 0),
 ]
 module.exports = { rooms };
