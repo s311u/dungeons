@@ -12,9 +12,10 @@ class Character {
 }
 
 class Player extends Character{
-    constructor(name, health, dp, sr, position, ass){ //adding position to player class name
+    constructor(name, health, dp, sr, position, ass, inventory){ //adding position and inventory to player class name
         super(name, health, dp, sr, ass);
         this.pos = position;
+        this.inventory = inventory;
     }
     attack(id){
         if (randomNumber() < this.sr){
@@ -30,7 +31,7 @@ class Player extends Character{
         }
     }
 }
-let player = new Player("Player", 10, 2, 75, 0, "shiny sword");
+let player = new Player("Player", 10, 2, 75, 0, "shiny sword", []);
 
 class Enemy extends Character{
     constructor(id, name, health, dp, sr, ass, status){ //adding id to enemy class name
