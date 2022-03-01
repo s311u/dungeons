@@ -31,16 +31,17 @@ class Player extends Character{
         }
     }
 }
-let player = new Player("Player", 10, 2, 75, 0, "shiny sword", []);
+let player = new Player("Player", 10, 2, 75, 0, "shiny sword", [0]);
 
 class Enemy extends Character{
-    constructor(id, name, health, dp, sr, ass, status){ //adding id to enemy class name
+    constructor(id, name, health, dp, sr, ass, status, hostile){ //adding id to enemy class name
         super(name, health, dp, sr, ass);
         this.id = id;
         this.status = status;
+        this.hostile = hostile; //1=yes, 0=no
     }
     attack(x){
-        if(this.status == 1) {
+        if(this.status == 1 && this.hostile == 1) {
             console.log(x.name + " sees a " + this.name)
             if (this.health > 0){
                 console.log("\n\n" + this.name + " attacks " + x.name + " with its " + this.ass);
@@ -63,9 +64,6 @@ class Enemy extends Character{
 }
 
 let enemies = [
-    new Enemy(0, "Sewer Rat", 2, 1, 50, "sharp teeth", 1), // status: 1 => alive, 0 => dead
-    new Enemy(1, "Giant Dragon", 4, 8, 90, "sharp claws and fiery breath", 1),
-    new Enemy(2, "Otto", 10, 5, 65, "superior intellectual capacity", 1)
 ];
 
 

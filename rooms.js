@@ -1,5 +1,5 @@
 class Room{
-    constructor(id, name, enemyId, npcId, keyId, connections, info){
+    constructor(id, name, enemyId, npcId, itemId, connections, info, visited){
         this.id = id;
         this.name = name;
         this.enemyId = enemyId;
@@ -39,6 +39,6 @@ class Item { //items can include keys, potions, armor and other types of objects
 }
 
 let items = [
-    new Item(0, "", 0, 0)
+    new Item(0, "Lock-picking kit", 0, 1)
 ];
 module.exports = { rooms, items };

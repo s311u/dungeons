@@ -1,14 +1,16 @@
 const prompts = require('prompts');
 const choices = require('./choices.js');
 const characters = require('./characters.js');
+const roomsFile = require('./rooms.js')
 
 async function gameLoop() {
 
     const actionChoices = [
+        { title: 'Check inventory', value: 'check' },
         { title: 'Look around', value: 'look' },
         { title: 'Go to room', value: 'goTo' },
-        { title: 'Attack', value: 'attack'},
-        { title: 'Exit game', value: 'exit'}
+        { title: 'Attack', value: 'attack' },
+        { title: 'Exit game', value: 'exit' }
     ];
 
     const response = await prompts({
@@ -24,9 +26,7 @@ async function gameLoop() {
 
 process.stdout.write('\033c');
 
-console.log('WELCOME TO THE DUNGEONS OF LORD OBJECT ORIENTUS!')
-console.log('================================================')
-  console.log('You walk down the stairs to the dungeons')
+console.log('===================================================')
 gameLoop();
 
 

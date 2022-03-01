@@ -10,14 +10,14 @@ function action(choice) {
     }
     switch (choice) {
         case "look":
-            console.log(characters.player.name + " looks around");
-            console.log(characters.player.name + " is in the " + roomsFile.rooms[characters.player.pos].name + " and it is a " + roomsFile.rooms[characters.player.pos].info);
+            console.log("You are in the " + roomsFile.rooms[characters.player.pos].name + "\n\n" + roomsFile.rooms[characters.player.pos].info);
             console.log("\nThere are doorways leading to: ")
             for (let i = 0; i < connectedRooms.length; i++) {
                 console.log(connectedRooms[i])
             }
             if (roomsFile.rooms[characters.player.pos].enemyId.length != 0) {
-                characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[0]].attack(characters.player);
+                for (let i = 0; i < roomsFile.rooms[characters.player.pos].enemyId.length; i++)
+                characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[i]].attack(characters.player);
             }
             main.gameLoop();
             break;
@@ -69,7 +69,9 @@ function action(choice) {
                 if(characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[i]].status == 1){
                     aliveEnemies.push(characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[i]])
                 }
-            } if(aliveEnemies.length >= 1) {
+            } 
+            
+            if(aliveEnemies.length >= 1) {
                 async function chooseEnemy() {
                     let actionChoices = [];
                     for (let i = 0; i < aliveEnemies.length; i++) {
@@ -95,6 +97,13 @@ function action(choice) {
             } else {console.log("It's safe here, no enemies to attack"); 
             main.gameLoop()}
             
+            break;
+
+        case "check":
+            let actionChoices = [
+                { title: "Check armor", value: "armor"}
+            ];
+
             break;
 
         case "exit":
