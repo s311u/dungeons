@@ -47,7 +47,8 @@ function action(choice) {
                     console.log(characters.player.name + ' moves to ' + roomsFile.rooms[response.value].name + '\n-----------------------');
                     characters.player.pos = response.value;
                     if(roomsFile.rooms[characters.player.pos].enemyId.length > 0) {
-                        characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[0]].attack(characters.player);
+                        for (let i = 0; i < roomsFile.rooms[characters.player.pos].enemyId.length; i++)
+                        characters.enemies[roomsFile.rooms[characters.player.pos].enemyId[i]].attack(characters.player);
                     }
 
                     if (response.value == 0 && characters.enemies[0].status == 0){

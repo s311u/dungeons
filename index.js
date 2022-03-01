@@ -1,7 +1,7 @@
 const prompts = require('prompts');
 const choices = require('./choices.js');
 const characters = require('./characters.js');
-const roomsFile = require('./rooms.js')
+const items = require('./rooms.js')
 
 async function gameLoop() {
 
