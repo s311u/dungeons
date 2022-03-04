@@ -1,7 +1,7 @@
 const prompts = require('prompts');
 const choices = require('./choices.js');
 const characters = require('./characters.js');
-const items = require('./rooms.js')
+const roomsFile = require('./rooms.js')
 
 async function gameLoop() {
 
@@ -9,9 +9,12 @@ async function gameLoop() {
         { title: 'Check inventory', value: 'check' },
         { title: 'Look around', value: 'look' },
         { title: 'Go to room', value: 'goTo' },
-        { title: 'Attack', value: 'attack' },
         { title: 'Exit game', value: 'exit' }
     ];
+     
+    if(roomsFile.rooms[characters.player.pos].enemyId.length > 0){
+      actionChoices.splice(3, 0, { title: 'Attack', value: 'attack'})
+    }
 
     const response = await prompts({
       type: 'select',
@@ -19,6 +22,7 @@ async function gameLoop() {
       message: 'Choose your action',
       choices: actionChoices
     });
+    
     choices.action(response.value);
     
 }

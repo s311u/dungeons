@@ -33,6 +33,9 @@ class Player extends Character{
         }else{
             console.log(this.name + "'s attack misses the " + enemies[id].name)
         }
+        if(enemies[id].hostile == 0){
+            console.log("Why did you attack " + enemies[id].name + "? It will not harm you!")
+        }
     }
     async findItem(id){
         console.log()
@@ -63,6 +66,7 @@ class Enemy extends Character{
         this.status = status;
         this.hostile = hostile; //1=yes, 0=no
     }
+
     attack(x){
         if(this.status == 1 && this.hostile == 1) {
             console.log(x.name + " sees a " + this.name)
@@ -82,6 +86,8 @@ class Enemy extends Character{
                     console.log(this.name + " misses " + x.name + "!\n")
                 }
             }
+        }else if(this.status == 1 && this.hostile == 0) {
+            console.log(x.name + " sees a " + this.name)
         }
     }
 }
